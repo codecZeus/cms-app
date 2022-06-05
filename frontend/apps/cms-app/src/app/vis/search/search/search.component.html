@@ -1,0 +1,93 @@
+<mat-card>
+  <div class="my-3 my-md-5">
+    <div class="container">
+      <form [formGroup]="searchForm" action="#" class="card form-horizontal" method="post">
+        <div class="card">
+          <div class="card-status bg-purple"></div>
+          <div class="card-header">
+            <h4 class="card-title">PID search</h4>
+            <div class="card-options">
+              <a class="card-options-collapse" data-toggle="card-collapse" href="#"><i class="fe fe-chevron-up"></i></a>
+              <a class="card-options-remove" data-toggle="card-remove" href="#"><i class="fe fe-x"></i></a>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Patient ID.</label>
+                  <input
+                    class="form-control"
+                    formControlName="patientId"
+                    id="animalID"
+                    placeholder="Patient ID"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Ear Tag NO.</label>
+                  <input
+                    class="form-control"
+                    formControlName="earTagNumber"
+                    id="earID"
+                    placeholder="Ear Tag NO"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Microchip NO.</label>
+                  <input
+                    class="form-control"
+                    formControlName="microchipNumber"
+                    placeholder="Microchip NO"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Pet Registration NO.</label>
+                  <input
+                    class="form-control"
+                    formControlName="petRegistration"
+                    placeholder="Pet Registration NO"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Owner CID</label>
+                  <input class="form-control" formControlName="ownerCID" placeholder="CID" type="text" value="" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Animal Name </label>
+                  <input
+                    class="form-control"
+                    formControlName="animalName"
+                    placeholder="Animal Name"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer text-right">
+              <button (click)="showPID()" class="btn btn-primary" type="button">Search</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card>
+<app-search-results *ngIf="triggerSearchResultTable" [searchDetails]="dataSource"></app-search-results>
