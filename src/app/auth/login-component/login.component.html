@@ -1,0 +1,46 @@
+<div fxFlex>
+  <mat-toolbar color="primary">
+    <div fxLayoutAlign="center">
+      <h3 translate>Customer Management System</h3>
+    </div>
+  </mat-toolbar>
+  <div fxFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem" class="mat-typography">
+    <img src="../../../assets/logo.ico" style="width: 160px; height: 150px" alt="logo" />
+    <div class="login-container" fxLayout="row" fxLayoutAlign="center">
+      <mat-card fxFlex="90%" fxFlex.sm="66%" fxFlex.md="50%" fxFlex.gt-md="33%" class="login-box">
+        <form (ngSubmit)="login()" (keydown.enter)="login()" [formGroup]="loginForm" novalidate>
+          <div class="login-error" [hidden]="!error || isLoading" translate>Username or password incorrect.</div>
+          <br />
+          <div class="login-fields" fxLayout="column">
+            <mat-form-field appearance="fill" class="example-full-width" hideRequiredMarker>
+              <mat-label>username</mat-label>
+              <input
+                type="text"
+                matInput
+                appearance="outline"
+                formControlName="userName"
+                [placeholder]="'Username'"
+                required
+              />
+              <mat-error *ngIf="loginForm.controls['userName'].invalid && loginForm.controls['userName'].touched">
+                {{ usernameErr }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="example-full-width" hideRequiredMarker>
+              <mat-label>password</mat-label>
+              <input type="password" matInput formControlName="password" [placeholder]="'Password'" required />
+              <mat-error *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                {{ passwordErr }}
+              </mat-error>
+            </mat-form-field>
+            <mat-slide-toggle color="accent" formControlName="remember" translate>Remember me</mat-slide-toggle>
+            <br />
+            <button mat-raised-button class="login-button" type="submit" [disabled]="loginForm.invalid || isLoading">
+              <span translate>LOGIN</span>
+            </button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+@import "../../../styles/variables";
+@import "../../../styles/colors";
+
+.charts-wrapper {
+  display: flex;
+  margin: 0 8px;
+
+  @media (max-width: $normal) {
+    flex-wrap: wrap;
+  }
+}
+
+.chart {
+  width: 100%;
+
+  @media (max-width: $normal) {
+    width: 50%;
+  }
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.edit-button {
+  color: $blue;
+}
+
+.delete-button {
+  color: $dark-pink;
+}

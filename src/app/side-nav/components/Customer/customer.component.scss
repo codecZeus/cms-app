@@ -1,0 +1,39 @@
+@import "../../../styles/colors";
+@import "../../../styles/font";
+@import "../../../styles/variables";
+
+.user-button {
+  background-color: #03a9f4;
+  box-shadow: none;
+  min-width: 40px;
+  margin-right: 150px;
+  ::ng-deep {
+    outline: none;
+  }
+
+  &__icon {
+    color: #fff;
+  }
+}
+
+.user-menu-icon {
+  color: $light-grey;
+  margin-right: 16px;
+  opacity: 0.8;
+}
+
+.user-menu {
+  &__item-title {
+    color: #03a9f4;
+
+    &:hover {
+      color: $dark-grey;
+      background-color: $blue-white;
+      text-underline: none;
+
+      & .user-menu-icon {
+        color: $grey;
+      }
+    }
+  }
+}

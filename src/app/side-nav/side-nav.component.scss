@@ -1,0 +1,108 @@
+@import "../styles/colors";
+@import "../styles/font";
+@import "../styles/variables";
+
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.mat-list {
+  padding-top: 0;
+}
+
+.mat-list-item {
+  text-decoration: none;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.elms {
+  font-family: "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: bold;
+  color: whitesmoke;
+  margin-left: 10%;
+}
+
+.header-toolbar {
+  display: flex;
+  align-items: center;
+
+  .unlock-button {
+    border-color: #3cd4a0;
+    margin-right: 16px;
+    text-transform: lowercase;
+    background-color: #3cd4a0;
+    color: white;
+    letter-spacing: 0.0892857143em;
+    @media (max-width: 76px) {
+      display: none;
+    }
+  }
+
+  .cdk-overlay-pane {
+    width: 100%;
+  }
+  .mat-menu-panel {
+    width: 100%;
+  }
+
+  .mat-menu-item {
+    margin-left: 10px;
+    width: 40%;
+    text-transform: lowercase;
+    align-items: center;
+  }
+  .span translate {
+    font-size: smaller;
+  }
+}
+
+.cdk-overlay-pane {
+  width: 100%;
+}
+.mat-menu-panel {
+  width: 100%;
+}
+
+.mat-menu-item {
+  margin-top: 0;
+  margin-left: 16px;
+  margin-right: 60px;
+  width: 100%;
+  align-items: center;
+}
+.menu-button {
+  width: 2px;
+  ::ng-deep {
+    outline: none;
+  }
+
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: row;
+  place-content: center flex-end;
+  align-items: center;
+}
+
+.mat-list-user {
+  cursor: pointer;
+}
+
+.height-44 {
+  height: 44px !important;
+}
+
+.side-logo-bar {
+  width: 100%;
+  text-align: center !important;
+  padding-top: 5px;
+  display: block !important;
+  height: 125px;
+}
+.display-block {
+  display: block !important;
+}

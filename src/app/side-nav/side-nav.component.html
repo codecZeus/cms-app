@@ -1,0 +1,80 @@
+<div fxFlex>
+  <mat-sidenav-container fxFill>
+    <!--    SideNav -->
+    <mat-sidenav
+      #sidenav
+      [disableClose]="!isMobile"
+      [mode]="isMobile ? 'over' : 'side'"
+      [opened]="!isMobile"
+      ngClass.gt-sm="has-border"
+    >
+      <!--      TashiCell logo-->
+      <mat-toolbar class="side-logo-bar" color="primary">
+        <div><img alt="logo" src="../../assets/logo.ico" style="width: 50%" /></div>
+        <div>CMS App</div>
+      </mat-toolbar>
+
+      <!--      side bar navigation items-->
+      <nav>
+        <mat-list>
+          <!--        Home (Customer list) Route-->
+          <a
+            (click)="isMobile && sidenav.close()"
+            mat-list-item
+            routerLink="{{ routes.CUSTOMERLIST }}"
+            routerLinkActive="active"
+          >
+            <mat-icon>person</mat-icon>&nbsp;<span>Customer List</span>
+          </a>
+
+          <!--        Search component Route-->
+          <a
+            (click)="isMobile && sidenav.close()"
+            mat-list-item
+            routerLink="{{ routes.SEARCH }}"
+            routerLinkActive="active"
+          >
+            <mat-icon>search</mat-icon>&nbsp;<span>Search</span>
+          </a>
+
+          <div class="mat-list-user">
+            <a mat-list-item>
+              <div fxLayout="row" fxLayoutAlign="left">
+                <mat-icon>edit</mat-icon>&nbsp;
+                <span (click)="openDialog()" fxFlex>Edit Profile</span>
+              </div>
+            </a>
+
+            <div class="mat-list-user">
+              <a mat-list-item>
+                <div fxLayout="row" fxLayoutAlign="left">
+                  <mat-icon>group</mat-icon>&nbsp;
+                  <span fxFlex (click)="openUserManagement()">Customer Management</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </mat-list>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content style="background: rgb(228 228 228)">
+      <mat-toolbar class="mat-elevation-z6 height-44 display-block" color="primary">
+        <button (click)="sidenav.toggle()" *ngIf="true" class="menu-button float-left" mat-icon-button>
+          <mat-icon *ngIf="!sidenav.opened; else showCross" aria-label="Side nav toggle icon" class="icon-display"
+            >arrow_right</mat-icon
+          >
+          <ng-template #showCross>
+            <mat-icon aria-label="Side nav toggle icon">arrow_left</mat-icon>
+          </ng-template>
+        </button>
+
+        <div fxFlex></div>
+
+        <div class="header-toolbar">
+          <cms-app-Customer (signOut)="signOut()" [user]="currentUser"></cms-app-Customer>
+        </div>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

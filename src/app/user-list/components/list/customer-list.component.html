@@ -1,0 +1,57 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Customer Lists</mat-card-title>
+    <div fxFlex></div>
+    <mat-card-actions>
+      <button mat-raised-button (click)="openAddModal()" color="primary">
+        <mat-icon>add</mat-icon> Add New Customer
+      </button>
+    </mat-card-actions>
+  </mat-card-header>
+  <table mat-table [dataSource]="customerDetails" matSort class="mat-elevation-z1" style="cursor: pointer">
+    <ng-container matColumnDef="slNo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Sl No</th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        {{ paginatorRef.pageIndex * paginatorRef.pageSize + (i + 1) }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="customerName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Customer Name</th>
+      <td mat-cell *matCellDef="let element" (click)="redirect(element.id)">
+        {{ element.customerName }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="customerNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Customer Number</th>
+      <td mat-cell *matCellDef="let element" (click)="redirect(element.id)">{{ element.customerNumber }}</td>
+    </ng-container>
+    <ng-container matColumnDef="customerCID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Customer CID</th>
+      <td mat-cell *matCellDef="let element" (click)="redirect(element.id)">{{ element.customerCID }}</td>
+    </ng-container>
+    <ng-container matColumnDef="simPurchasedDate&Time">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">SIM Purchased Date&Time</th>
+      <td mat-cell *matCellDef="let element" (click)="redirect(element.id)">{{ element.simPurchasedDateTime }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Edit</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="editCustomer(element.id)" class="edit-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th class="table-heading" mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Delete</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="deleteUser(element.id)" class="delete-button">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator #paginatorRef [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</mat-card>
