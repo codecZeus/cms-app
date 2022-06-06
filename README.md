@@ -59,6 +59,13 @@ reports/                     test and coverage reports
 proxy.conf.js                backend proxy configuration
 ```
 
+### Git Branching
+
+`master` ---> production<br>
+`development` ---> beta/test<br>
+
+> Make seperate branch for new features and point to `development`
+
 ### Main tasks
 
 Task automation is based on **yarn scripts**.
