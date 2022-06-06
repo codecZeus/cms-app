@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MasterService } from '../../../master-management/services/master.service';
@@ -7,6 +7,8 @@ import { CustomerDetails } from '../../../master-management/models/master';
 import { ConfirmationDialogComponent } from '../../../@shared/confirmation-dialog/confirmation-dialog.component';
 import { CreateCustomerComponent } from '../../../master-management/components/create-user/create-customer.component';
 import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'cms-app-Customer-list',
@@ -14,6 +16,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./customer-list.component.scss'],
 })
 export class CustomerListComponent implements OnInit {
+  /**
+   * @description for mat paginator
+   */
+  // public array: any;
+  // public displayedColumn = ['', '', '', '', ''];
+  // public dataSource: any;
+  // public pageSize = 10;
+  // public currentPage = 0;
+  // public totalSize = 0;
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
   customerDetails!: CustomerDetails[];
   customer: CustomerDetails[];
   public refreshData$ = new BehaviorSubject<boolean>(false);
@@ -28,15 +40,18 @@ export class CustomerListComponent implements OnInit {
     'delete',
   ];
 
-  constructor(
-    private dialog: MatDialog,
-    private router: Router,
-    private service: MasterService,
-    private notificationService: NotificationService
-  ) {}
+  constructor(private dialog: MatDialog, private router: Router, private service: MasterService) /**
+   * @description for Notification
+   */
+  // private notificationService: NotificationService
+  {}
 
   ngOnInit(): void {
     this.customerDetails = this.service.loadUsers();
+    /**
+     * @description for mat paginator
+     */
+    // this.getArray();
   }
 
   editCustomer(id: number) {
@@ -114,4 +129,27 @@ export class CustomerListComponent implements OnInit {
     const customer: CustomerDetails = this.service.fetchCustomerDetail(id);
     this.router.navigate(['/customerDetails'], { state: { data: { customer } } });
   }
+
+  /**
+   * @description These moethods can be used to set-up mat paginator
+   */
+  // public handlePage(e: any) {
+  //   this.currentPage = e.pageIndex;
+  //   this.pageSize = e.pageSize;
+  //   this.iterator();
+  // }
+  //
+  // private getArray() {
+  //       this.dataSource = new MatTableDataSource<Element>(this.customerDetails);
+  //       this.dataSource.paginator = this.paginator;
+  //       this.array = this.customerDetails;
+  //       this.totalSize = this.array.length;
+  //       this.iterator();
+  // }
+  //
+  // private iterator() {
+  //   const end = (this.currentPage + 1) * this.pageSize;
+  //   const start = this.currentPage * this.pageSize;
+  //   this.dataSource = this.array.slice(start, end);
+  // }
 }
