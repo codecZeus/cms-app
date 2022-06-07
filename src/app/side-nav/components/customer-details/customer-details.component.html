@@ -29,3 +29,41 @@
   </div>
   <mat-divider></mat-divider>
 </mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Services</mat-card-title>
+  </mat-card-header>
+
+  <table mat-table [dataSource]="serviceDetails" matSort class="mat-elevation-z1" style="cursor: pointer">
+    <ng-container matColumnDef="gsmVoice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">GSM Voice</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.gsmVoice }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="sms">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">SMS</th>
+      <td mat-cell *matCellDef="let element">{{ element.sms }}</td>
+    </ng-container>
+    <ng-container matColumnDef="3G">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">3G</th>
+      <td mat-cell *matCellDef="let element">{{ element.thereG }}</td>
+    </ng-container>
+    <ng-container matColumnDef="4G">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">4G</th>
+      <td mat-cell *matCellDef="let element">{{ element.fourG }}</td>
+    </ng-container>
+    <ng-container matColumnDef="5G">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">5G</th>
+      <td mat-cell *matCellDef="let element">{{ element.fiveG }}</td>
+    </ng-container>
+    <ng-container matColumnDef="eTeeru">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">eTeeru</th>
+      <td mat-cell *matCellDef="let element">{{ element.eTeeru }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</mat-card>

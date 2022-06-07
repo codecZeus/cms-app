@@ -57,6 +57,26 @@ export const CUSTOMER_DETAIL: CustomerDetails[] = [
   },
 ];
 
+export class ServiceDetails {
+  id: number | undefined;
+  gsmVoice: string | undefined;
+  sms: string | undefined;
+  thereG: string | undefined;
+  fourG: string | undefined;
+  fiveG: string | undefined;
+  eTeeru: string | undefined;
+}
+export const SERVICE_DETAIL: ServiceDetails[] = [
+  {
+    id: 1,
+    gsmVoice: 'active',
+    sms: 'active',
+    thereG: 'active',
+    fourG: 'active',
+    fiveG: 'active',
+    eTeeru: 'active',
+  },
+];
 /**
  * @description This is for rest service which is used to setup API
  */

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CUSTOMER_DETAIL, CustomerDetails } from '../models/master';
+import { CUSTOMER_DETAIL, CustomerDetails, SERVICE_DETAIL, ServiceDetails } from '../models/master';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +13,11 @@ export class MasterService {
     }),
   };
   private customerDetails: CustomerDetails[] = CUSTOMER_DETAIL;
+  private serviceDetails: ServiceDetails[] = SERVICE_DETAIL;
 
   constructor(private http: HttpClient) {}
 
-  public loadUsers(): CustomerDetails[] {
+  public loadCustomers(): CustomerDetails[] {
     // return new Observable<CreateUser[]>((observer) => {
     //   this.http.get<CreateUser[]>(`${environment.serverUrl}/userDtls/`, this.httpOptions).subscribe(
     //     (response) => {
@@ -26,6 +27,18 @@ export class MasterService {
     //   );
     // });
     return this.customerDetails;
+  }
+
+  public loadService(): ServiceDetails[] {
+    // return new Observable<CreateUser[]>((observer) => {
+    //   this.http.get<CreateUser[]>(`${environment.serverUrl}/userDtls/`, this.httpOptions).subscribe(
+    //     (response) => {
+    //       console.log(response);
+    //       observer.next(response);
+    //     }
+    //   );
+    // });
+    return this.serviceDetails;
   }
 
   public deleteCustomer(id: number) {

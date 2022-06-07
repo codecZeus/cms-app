@@ -1,14 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MasterService } from '../../../master-management/services/master.service';
-import { NotificationService } from '../../../@core';
 import { CustomerDetails } from '../../../master-management/models/master';
 import { ConfirmationDialogComponent } from '../../../@shared/confirmation-dialog/confirmation-dialog.component';
 import { CreateCustomerComponent } from '../../../master-management/components/create-user/create-customer.component';
 import { Router } from '@angular/router';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'cms-app-Customer-list',
@@ -26,10 +22,9 @@ export class CustomerListComponent implements OnInit {
   // public currentPage = 0;
   // public totalSize = 0;
   // @ViewChild(MatPaginator) paginator: MatPaginator;
+
   customerDetails!: CustomerDetails[];
   customer: CustomerDetails[];
-  public refreshData$ = new BehaviorSubject<boolean>(false);
-
   displayedColumns: string[] = [
     'slNo',
     'customerName',
@@ -47,7 +42,7 @@ export class CustomerListComponent implements OnInit {
   {}
 
   ngOnInit(): void {
-    this.customerDetails = this.service.loadUsers();
+    this.customerDetails = this.service.loadCustomers();
     /**
      * @description for mat paginator
      */
@@ -69,7 +64,7 @@ export class CustomerListComponent implements OnInit {
     // });
   }
 
-  deleteUser(id: number) {
+  deletCustomer(id: number) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '500px',
       data: {
@@ -105,12 +100,12 @@ export class CustomerListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result: CustomerDetails) => {
       if (result) {
-        this.addUsers(result);
+        this.addCustomers(result);
       }
     });
   }
 
-  addUsers(createUser: CustomerDetails) {
+  addCustomers(createUser: CustomerDetails) {
     /**
      * @description BE binding
      */
