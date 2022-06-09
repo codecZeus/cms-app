@@ -9296,7 +9296,7 @@ next-tick@^1.1.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.1.0.tgz#1836ee30ad56d67ef281b22bd199f709449b35eb"
   integrity sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==
 
-ngx-deploy-docker@0.0.5:
+ngx-deploy-docker@^0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/ngx-deploy-docker/-/ngx-deploy-docker-0.0.5.tgz#54b8c06be61763c2d54c90a22cf3c97c140182c5"
   integrity sha512-FUHkWTg9sL/vIqMaVi8Fh65qo8kkz7/WLJ+YgACirUSYDhFd06O3k/yROaALz3C/008rUWBBJWTxhUKuSCIrYg==

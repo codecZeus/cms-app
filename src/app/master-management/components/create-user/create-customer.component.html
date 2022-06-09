@@ -1,1 +1,67 @@
-Field for adding new customer can be added here
+<mat-card-header>
+  <mat-card-title>{{ data.actionType }} Customer</mat-card-title>
+</mat-card-header>
+<mat-dialog-content style="height: 150px">
+  <div class="col-md-12 col-lg-12">
+    <form class="form-horizontal form" [formGroup]="customerDetailForm">
+      <div class="form-group row">
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Customer Name</mat-label>
+            <input matInput formControlName="customerName" name="customerName" placeholder="Customer Name" />
+            <mat-error>Customer Name is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Customer Number</mat-label>
+            <input matInput formControlName="customerNumber" name="customerNumber" placeholder="Customer Number" />
+            <mat-error>Customer number is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Customer CID</mat-label>
+            <input matInput formControlName="customerCID" name="customerCID" placeholder="Customer CID" />
+            <mat-error>Customer CID is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>SIM Purchased Date and Time</mat-label>
+            <input
+              matInput
+              formControlName="simPurchasedDateTime"
+              name="simPurchasedDateTime"
+              placeholder="SIM Purchased Date and Time"
+            />
+            <mat-error>SIM Purchased Date and Time is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    *ngIf="actionType === 'Add New'"
+    mat-raised-button
+    color="primary"
+    [disabled]="!customerDetailForm.valid"
+    (click)="saveCustomer()"
+  >
+    Add
+  </button>
+  <button
+    *ngIf="actionType === 'Edit'"
+    mat-raised-button
+    color="primary"
+    [disabled]="!customerDetailForm.valid"
+    (click)="updateCustomer()"
+  >
+    Update
+  </button>
+  <button mat-stroked-button color="secondary" (click)="closeDialog()">Close</button>
+</mat-dialog-actions>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Credentials, CredentialsService } from './credentials.service';
-import { HttpClient } from '@angular/common/http';
 
 export interface LoginContext {
   userName: string;
@@ -27,7 +26,7 @@ export class AuthenticationService {
     userid: 123,
   };
 
-  constructor(private credentialsService: CredentialsService, private http: HttpClient) {}
+  constructor(private credentialsService: CredentialsService) {}
 
   /**
    * Authenticates the Customer.
@@ -65,7 +64,7 @@ export class AuthenticationService {
   }
 
   /**
-   * @description This method is used to force check Customer credential
+   * @description This method is used to force check Admin credential
    */
   checkCredential(name: string, password: string): number {
     return name === 'Admin' && password === 'Admin2022' ? 1 : 0;

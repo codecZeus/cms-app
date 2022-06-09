@@ -35,10 +35,13 @@ export class CustomerListComponent implements OnInit {
     'delete',
   ];
 
-  constructor(private dialog: MatDialog, private router: Router, private service: MasterService) /**
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private service: MasterService // private notificationService: NotificationService
+  ) /**
    * @description for Notification
    */
-  // private notificationService: NotificationService
   {}
 
   ngOnInit(): void {
@@ -49,22 +52,24 @@ export class CustomerListComponent implements OnInit {
     // this.getArray();
   }
 
-  editCustomer(id: number) {
+  editCustomer(customer: CustomerDetails) {
     const dialogRef = this.dialog.open(CreateCustomerComponent, {
-      width: '700px',
+      width: '800px',
       data: {
-        actionType: 'EDIT',
-        id,
+        actionType: 'Edit',
+        customer,
       },
     });
-    // dialogRef.afterClosed().subscribe((result: CustomerDetails) => {
-    //   if (result) {
-    //     this.addUsers(result);
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe((result: CustomerDetails) => {
+      if (result) {
+        const clone = JSON.parse(JSON.stringify(this.customerDetails));
+        clone.splice(this.customerDetails.indexOf(customer), 0, result);
+        this.customerDetails = clone;
+      }
+    });
   }
 
-  deletCustomer(id: number) {
+  deleteCustomer(customer: CustomerDetails) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '500px',
       data: {
@@ -75,6 +80,12 @@ export class CustomerListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: CustomerDetails) => {
       if (result) {
         /**
+         * @description This will delete a customer
+         */
+        const clone = JSON.parse(JSON.stringify(this.customerDetails));
+        clone.splice(this.customerDetails.indexOf(customer), 1);
+        this.customerDetails = clone;
+        /**
          * @description BE binding
          */
         // this.service.deleteCustomer(id).subscribe(
@@ -83,7 +94,7 @@ export class CustomerListComponent implements OnInit {
         //     this.refreshData$.next(true);
         //   },
         //   () => {
-        //     this.notificationService.openErrorSnackBar('User couldnot be delete, try again');
+        //     this.notificationService.openErrorSnackBar('User couldn't be delete, try again');
         //   }
         // );
       }
@@ -94,39 +105,47 @@ export class CustomerListComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateCustomerComponent, {
       width: '800px',
       data: {
-        actionType: 'ADD',
-        id: '',
+        actionType: 'Add New',
+        customer: '',
       },
     });
     dialogRef.afterClosed().subscribe((result: CustomerDetails) => {
       if (result) {
-        this.addCustomers(result);
+        const clone = JSON.parse(JSON.stringify(this.customerDetails));
+        clone.splice(this.customerDetails.length, 0, result);
+        this.customerDetails = clone;
+        /**
+         * with real BE
+         */
+        // this.addCustomers(result)
       }
     });
   }
 
-  addCustomers(createUser: CustomerDetails) {
-    /**
-     * @description BE binding
-     */
-    // this.service.saveCustomer(createUser).subscribe(
-    //   () => {
-    //     this.notificationService.openSuccessSnackBar('User successfully added');
-    //     this.refreshData$.next(true);
-    //   },
-    //   () => {
-    //     this.notificationService.openErrorSnackBar('User details could not be saved, please try again');
-    //   }
-    // );
-  }
-
-  redirect(id: number) {
-    const customer: CustomerDetails = this.service.fetchCustomerDetail(id);
+  redirect(customer: CustomerDetails) {
     this.router.navigate(['/customerDetails'], { state: { data: { customer } } });
   }
 
   /**
-   * @description These moethods can be used to set-up mat paginator
+   * @description this will be called when real DB is implemented
+   */
+  // addCustomers(createUser: CustomerDetails) {
+  // /**
+  //  * @description BE binding
+  //  */
+  // this.service.saveCustomer(createUser).subscribe(
+  //   () => {
+  //     this.notificationService.openSuccessSnackBar('User successfully added');
+  //     this.refreshData$.next(true);
+  //   },
+  //   () => {
+  //     this.notificationService.openErrorSnackBar('User details could not be saved, please try again');
+  //   }
+  // );
+  // }
+
+  /**
+   * @description These methods can be used to set up mat paginator
    */
   // public handlePage(e: any) {
   //   this.currentPage = e.pageIndex;

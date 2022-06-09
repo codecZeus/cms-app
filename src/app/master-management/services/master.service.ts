@@ -41,7 +41,11 @@ export class MasterService {
     return this.serviceDetails;
   }
 
-  public deleteCustomer(id: number) {
+  public deleteCustomer(customer: CustomerDetails): CustomerDetails[] {
+    const index = this.customerDetails.indexOf(customer);
+    console.log(index);
+    return this.customerDetails.splice(index);
+
     /**
      * @description post request to BE to delete a customer
      */
@@ -53,9 +57,5 @@ export class MasterService {
      * @description post request to BE to save a customer
      */
     // return this.http.post(`${environment.serverUrl}/customerDtls/`, createCustomer, this.httpOptions);
-  }
-
-  fetchCustomerDetail(id: number): CustomerDetails {
-    return this.customerDetails[id];
   }
 }

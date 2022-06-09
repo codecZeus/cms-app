@@ -7,7 +7,7 @@ import { MaterialModule } from '../material.module';
 import { AuthModule } from '../auth';
 import { SideNavComponent } from './side-nav.component';
 import { CustomerComponent } from './components';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { CustomerManagementComponent } from './components/customer-management/customer-management.component';
 import { CustomerDetailsComponent } from '@app/side-nav/components/customer-details/customer-details.component';
@@ -21,6 +21,7 @@ import { CustomerDetailsComponent } from '@app/side-nav/components/customer-deta
     AuthModule,
     RouterModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   declarations: [
     SideNavComponent,

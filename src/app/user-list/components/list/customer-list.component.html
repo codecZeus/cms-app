@@ -17,27 +17,27 @@
     </ng-container>
     <ng-container matColumnDef="customerName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Customer Name</th>
-      <td mat-cell *matCellDef="let element" (click)="redirect(element.id)">
+      <td mat-cell *matCellDef="let element" (click)="redirect(element)">
         {{ element.customerName }}
       </td>
     </ng-container>
     <ng-container matColumnDef="customerNumber">
       <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Customer Number</th>
-      <td mat-cell *matCellDef="let element" (click)="redirect(element.id)">{{ element.customerNumber }}</td>
+      <td mat-cell *matCellDef="let element" (click)="redirect(element)">{{ element.customerNumber }}</td>
     </ng-container>
     <ng-container matColumnDef="customerCID">
       <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Customer CID</th>
-      <td mat-cell *matCellDef="let element" (click)="redirect(element.id)">{{ element.customerCID }}</td>
+      <td mat-cell *matCellDef="let element" (click)="redirect(element)">{{ element.customerCID }}</td>
     </ng-container>
     <ng-container matColumnDef="simPurchasedDate&Time">
       <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">SIM Purchased Date&Time</th>
-      <td mat-cell *matCellDef="let element" (click)="redirect(element.id)">{{ element.simPurchasedDateTime }}</td>
+      <td mat-cell *matCellDef="let element" (click)="redirect(element)">{{ element.simPurchasedDateTime }}</td>
     </ng-container>
 
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Edit</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="editCustomer(element.id)" class="edit-button">
+        <button mat-icon-button (click)="editCustomer(element)" class="edit-button">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
@@ -45,7 +45,7 @@
     <ng-container matColumnDef="delete">
       <th class="table-heading" mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Delete</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="deletCustomer(element.id)" class="delete-button">
+        <button mat-icon-button (click)="deleteCustomer(element)" class="delete-button">
           <mat-icon>delete</mat-icon>
         </button>
       </td>
